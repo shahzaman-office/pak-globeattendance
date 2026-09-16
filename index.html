@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pak Globe Attendance Dashboard</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a56db">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: #1a56db;
+    display: flex; align-items: center; justify-content: center;
+    font-family: -apple-system, Roboto, Arial, sans-serif;
+    color: #fff;
+  }
+  .loader { text-align: center; }
+  .spinner {
+    width: 40px; height: 40px; margin: 0 auto 16px;
+    border: 4px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+  <div class="loader">
+    <div class="spinner"></div>
+    <div>Dashboard Opening...</div>
+  </div>
+  <script>
+    // 🔧 Apni Apps Script URL yahan daalein
+    const DASHBOARD_URL = "https://script.google.com/macros/s/AKfycbwtdD_BWxPeMGBGQ9DS-8uY-ApQrK5Yulv5hy082FGsSpiSEyrzv9xO7KClxAJGncbo/exec";
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+
+    // Thoda delay taaki splash screen dikhe, phir redirect
+    setTimeout(() => {
+      window.location.href = DASHBOARD_URL;
+    }, 400);
+  </script>
+</body>
+</html>
